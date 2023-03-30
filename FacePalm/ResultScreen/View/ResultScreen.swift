@@ -81,12 +81,12 @@ struct ResultScreen: View {
         }
         .onReceive(viewModel.$showHomeScreen) { shouldShow in
             if shouldShow {
-                navigation.path.removeLast(navigation.path.count - 1)
+                navigation.path = NavigationPath([Screen.home])
             }
         }
         .onReceive(viewModel.$showGameScreen) { shouldShow in
             if shouldShow {
-                navigation.path.removeLast(navigation.path.count - 3)
+                navigation.path.removeLast(2)
             }
         }
         .task {
