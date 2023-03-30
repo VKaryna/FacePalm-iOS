@@ -29,6 +29,7 @@
 		E945115529900BC500B94ED0 /* RealTimeGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E945115429900BC500B94ED0 /* RealTimeGameManager.swift */; };
 		E9456C772989BDB700E6FD82 /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9456C762989BDB700E6FD82 /* Popup.swift */; };
 		E95CC6B729D5ED5C00594895 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95CC6B629D5ED5C00594895 /* Settings.swift */; };
+		E95CC6B929D5F6E900594895 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E95CC6B829D5F6E900594895 /* Launch Screen.storyboard */; };
 		E9692A2129917F06007BFC54 /* PlayersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9692A2029917F06007BFC54 /* PlayersViewModel.swift */; };
 		E9692A232991802F007BFC54 /* PlayersNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9692A222991802F007BFC54 /* PlayersNetworkManager.swift */; };
 		E9692A2829918430007BFC54 /* UserAlreadyExistsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9692A2729918430007BFC54 /* UserAlreadyExistsError.swift */; };
@@ -40,7 +41,6 @@
 		E986315A2999A81D00914676 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98631592999A81D00914676 /* GameState.swift */; };
 		E987EFC5297B4EFC0070EC87 /* FacePalmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E987EFC4297B4EFC0070EC87 /* FacePalmApp.swift */; };
 		E987EFC9297B4EFF0070EC87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E987EFC8297B4EFF0070EC87 /* Assets.xcassets */; };
-		E987EFCC297B4EFF0070EC87 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E987EFCB297B4EFF0070EC87 /* Preview Assets.xcassets */; };
 		E987EFD7297B4F7F0070EC87 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E987EFD6297B4F7F0070EC87 /* HomeScreen.swift */; };
 		E99443CB297CA66500DBB9EA /* GameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99443CA297CA66500DBB9EA /* GameResponse.swift */; };
 		E99443CD297CA73000DBB9EA /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99443CC297CA73000DBB9EA /* GameViewModel.swift */; };
@@ -102,6 +102,7 @@
 		E945115429900BC500B94ED0 /* RealTimeGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeGameManager.swift; sourceTree = "<group>"; };
 		E9456C762989BDB700E6FD82 /* Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
 		E95CC6B629D5ED5C00594895 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		E95CC6B829D5F6E900594895 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E9692A2029917F06007BFC54 /* PlayersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersViewModel.swift; sourceTree = "<group>"; };
 		E9692A222991802F007BFC54 /* PlayersNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersNetworkManager.swift; sourceTree = "<group>"; };
 		E9692A2729918430007BFC54 /* UserAlreadyExistsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAlreadyExistsError.swift; sourceTree = "<group>"; };
@@ -114,7 +115,6 @@
 		E987EFC1297B4EFC0070EC87 /* FacePalm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FacePalm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E987EFC4297B4EFC0070EC87 /* FacePalmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacePalmApp.swift; sourceTree = "<group>"; };
 		E987EFC8297B4EFF0070EC87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E987EFCB297B4EFF0070EC87 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E987EFD6297B4F7F0070EC87 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		E99443CA297CA66500DBB9EA /* GameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResponse.swift; sourceTree = "<group>"; };
 		E99443CC297CA73000DBB9EA /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
@@ -422,7 +422,7 @@
 		E987EFCA297B4EFF0070EC87 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				E987EFCB297B4EFF0070EC87 /* Preview Assets.xcassets */,
+				E95CC6B829D5F6E900594895 /* Launch Screen.storyboard */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -605,7 +605,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E987EFCC297B4EFF0070EC87 /* Preview Assets.xcassets in Resources */,
+				E95CC6B929D5F6E900594895 /* Launch Screen.storyboard in Resources */,
 				E987EFC9297B4EFF0070EC87 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -820,8 +820,9 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.card-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -852,8 +853,9 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.card-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16;
 				LD_RUNPATH_SEARCH_PATHS = (
