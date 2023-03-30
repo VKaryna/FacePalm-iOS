@@ -15,7 +15,7 @@ struct GameCardView: View {
     let text: String
     let cardIndex: Int
     let cardId: Int
-    var size: CGSize = .zero
+    var size: CGSize
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -29,8 +29,8 @@ struct GameCardView: View {
         .background(Color.fpCream)
         .cornerRadius(8)
         .frame(
-          width: Settings.thumbnailSize(size: size).width,
-          height: Settings.thumbnailSize(size: size).height)
+          width: TextCardGridSettings.thumbnailSize(size: size).width,
+          height: TextCardGridSettings.thumbnailSize(size: size).height)
         .overlay(
             RoundedRectangle(cornerRadius: 5)
                 .stroke(lineWidth: 3)
@@ -70,7 +70,7 @@ struct GameCardView: View {
 
 struct GameCardView_Previews: PreviewProvider {
     static var previews: some View {
-        return GameCardView(showChooseCardErrorPopup: .constant(true), showWaitingForOthersPopup: .constant(false), text: "Meow", cardIndex: 0, cardId: 1)
+        return GameCardView(showChooseCardErrorPopup: .constant(true), showWaitingForOthersPopup: .constant(false), text: "Meow", cardIndex: 0, cardId: 1, size: CGSize(width: 150, height: 250))
             .environmentObject(GameViewModel(gameId: "23", playerId: 1))
     }
 }

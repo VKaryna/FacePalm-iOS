@@ -15,6 +15,7 @@ struct VoteCardView: View {
     let text: String
     let cardIndex: Int
     let cardId: Int
+    var size: CGSize
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -23,10 +24,11 @@ struct VoteCardView: View {
             buttonView
         }
         .padding(8)
-        .frame(width: 128)
-        .frame(maxHeight: .infinity)
         .background(Color.fpCream)
         .cornerRadius(8)
+        .frame(
+          width: TextCardGridSettings.thumbnailSize(size: size).width,
+          height: TextCardGridSettings.thumbnailSize(size: size).height)
         .overlay(
             RoundedRectangle(cornerRadius: 5)
                 .stroke(lineWidth: 3)
@@ -66,7 +68,7 @@ struct VoteCardView: View {
 
 struct VoteCardView_Previews: PreviewProvider {
     static var previews: some View {
-        VoteCardView(showVoteCardErrorPopup: .constant(true), showWaitingForOthersPopup: .constant(false), text: "Meow", cardIndex: 0, cardId: 1)
+        VoteCardView(showVoteCardErrorPopup: .constant(true), showWaitingForOthersPopup: .constant(false), text: "Meow", cardIndex: 0, cardId: 1, size: CGSize(width: 150, height: 250))
             .environmentObject(VoteViewModel(gameId: "101", playerId: 1))
     }
 }

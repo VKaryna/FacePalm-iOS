@@ -23,12 +23,11 @@ struct VoteScreen: View {
             VStack(spacing: 24) {
                 VStack {
                     readyToGoText
-                    MemeImageView(imageName: viewModel.currentRound.round?.meme, roundNumber: nil, height: geometry.size.height * 0.5)
+                    MemeImageView(imageName: viewModel.currentRound.round?.meme, roundNumber: nil, height: geometry.size.height * 0.4)
                     makeYourDecisionText
                 }
                 .padding(.horizontal, 24)
                 cards
-                Spacer()
             }
         }
         .navigationBarBackButtonHidden()
@@ -87,17 +86,18 @@ struct VoteScreen: View {
     }
     
     private var cards: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            LazyHStack(spacing: 12) {
-                ForEach(viewModel.voteCards.cardsToDisplay.indices, id: \.self) { index in
-                    let card = viewModel.voteCards.cardsToDisplay[index]
-                    VoteCardView(showVoteCardErrorPopup: $showVoteCardErrorPopup, showWaitingForOthersPopup: $showWaitingForOthersPopup, text: card.text, cardIndex: index, cardId: card.id)
-                        .environmentObject(viewModel)
+        GeometryReader { geometry in
+            ScrollView(.vertical, showsIndicators: false) {
+                LazyVGrid(columns: TextCardGridSettings.columns(size: geometry.size), spacing: 24) {
+                    ForEach(viewModel.voteCards.cardsToDisplay.indices, id: \.self) { index in
+                        let card = viewModel.voteCards.cardsToDisplay[index]
+                        VoteCardView(showVoteCardErrorPopup: $showVoteCardErrorPopup, showWaitingForOthersPopup: $showWaitingForOthersPopup, text: card.text, cardIndex: index, cardId: card.id, size: geometry.size)
+                            .environmentObject(viewModel)
+                    }
                 }
+                .padding(.horizontal, 24)
             }
-            .padding(.horizontal, 24)
         }
-        .frame(height: 168)
     }
        
     private var readyToGoText: some View {
@@ -129,6 +129,6 @@ struct VoteScreen: View {
 
 struct VoteScreen_Previews: PreviewProvider {
     static var previews: some View {
-        VoteScreen(gameId: "101", playerId: 1)
+        VoteScreen(gameId: "101", playerId: 2)
     }
 }

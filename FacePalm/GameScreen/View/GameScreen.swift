@@ -87,7 +87,7 @@ struct GameScreen: View {
     private var cards: some View {
         GeometryReader { geometry in
             ScrollView(.vertical, showsIndicators: false) {
-                LazyVGrid(columns: columns(size: geometry.size), spacing: 20) {
+                LazyVGrid(columns: TextCardGridSettings.columns(size: geometry.size), spacing: 24) {
                     ForEach(viewModel.currentPlayer.cardsToDisplay.indices, id: \.self) { index in
                         let card = viewModel.currentPlayer.cardsToDisplay[index]
                         GameCardView(showChooseCardErrorPopup: $showChooseCardErrorPopup, showWaitingForOthersPopup: $showWaitingForOthersPopup, text: card.text, cardIndex: index, cardId: card.id, size: geometry.size)
@@ -97,13 +97,6 @@ struct GameScreen: View {
                 .padding([.horizontal, .bottom], 24)
             }
         }
-    }
-    
-    func columns(size: CGSize) -> [GridItem] {
-      [
-        GridItem(.adaptive(
-          minimum: Settings.thumbnailSize(size: size).width))
-      ]
     }
        
     private var readyToGoText: some View {
