@@ -21,7 +21,6 @@ struct MemeImageView: View {
                 roundView(currentRound)
             }
         }
-        .cornerRadius(16)
         .onAppear {
             isRoundLabelVisible = true
         }
@@ -31,6 +30,7 @@ struct MemeImageView: View {
         Image(imageName ?? "image1")
             .resizable()
             .aspectRatio(contentMode: .fit)
+            .cornerRadius(16)
             .frame(height: height)
     }
     
