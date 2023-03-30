@@ -23,6 +23,7 @@ struct GameScreen: View {
             VStack {
                 readyToGoText
                 MemeImageView(imageName: viewModel.currentRound.round?.meme, roundNumber: viewModel.currentRound.roundNumber)
+                    .frame(height: 300)
                 makeYourDecisionText
             }
             .padding(.horizontal, 24)
@@ -72,7 +73,6 @@ struct GameScreen: View {
         .task {
             do {
                 try await viewModel.findGame()
-                viewModel.subscribeToGameUpdates() // TODO: We subscribe after success find game request here, but not on the top (for error popup). Bring the call to viewModel.findGame ??
             } catch {
                 showFindGameErrorPopup = true
             }
@@ -95,7 +95,6 @@ struct GameScreen: View {
             }
             .padding(.horizontal, 24)
         }
-        .frame(height: 168)
     }
        
     private var readyToGoText: some View {

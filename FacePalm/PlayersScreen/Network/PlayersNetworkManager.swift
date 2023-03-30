@@ -26,12 +26,6 @@ class PlayersNetworkManager {
 
         let response = try JSONDecoder().decode(JoinGameResponse.self, from: data)
         return (playerId: response.playerId, Game(response: response.game))
-
-//                var game = Game()
-//                game.ownerId = 1
-//                game.rounds = [Round(response: RoundResponse(meme: "running_girl", chosenCards: [], winnerCardId: 1))]
-//                game.players = [Player(id: 1, name: "Pavel", isReady: true, cards: [Card(id: 1, text: "Meow"), Card(id: 2, text: "Dog"), Card(id: 3, text: "Cat")]), Player(id: 2, name: "Karyna", isReady: false, cards: [Card(id: 1, text: "Meow"), Card(id: 2, text: "Dog"), Card(id: 3, text: "Cat")]), Player(id: 3, name: "Olga", isReady: false, cards: [Card(id: 1, text: "Meow"), Card(id: 2, text: "Dog"), Card(id: 3, text: "Cat")])]
-//                return game
     }
     
     func startGame(gameId: String) async throws -> Game {

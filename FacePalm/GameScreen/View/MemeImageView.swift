@@ -20,7 +20,6 @@ struct MemeImageView: View {
                 roundView(currentRound)
             }
         }
-        .aspectRatio(contentMode: .fit)
         .cornerRadius(16)
         .onAppear {
             isRoundLabelVisible = true

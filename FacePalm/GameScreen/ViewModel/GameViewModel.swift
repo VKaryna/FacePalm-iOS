@@ -47,6 +47,7 @@ class GameViewModel: ObservableObject {
         activityIndicator = true
         game = try await manager.findGame(gameId: game.gameId)
         activityIndicator = false
+        subscribeToGameUpdates()
     }
     
     func chooseCard(cardId: Int) async throws {

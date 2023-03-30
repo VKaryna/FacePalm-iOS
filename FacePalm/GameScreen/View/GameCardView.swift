@@ -17,14 +17,15 @@ struct GameCardView: View {
     let cardId: Int
     
     var body: some View {
-        VStack(alignment: .leading) {
-            textView
-            Spacer()
+        ZStack(alignment: .bottom) {
+            ScrollView {
+                textView
+                buttonView.opacity(0)
+            }
             buttonView
         }
         .padding(8)
-        .frame(width: 128)
-        .frame(maxHeight: .infinity)
+        .frame(width: 200)
         .background(Color.fpCream)
         .cornerRadius(8)
         .overlay(

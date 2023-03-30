@@ -25,6 +25,9 @@ struct FindGamePopup: View {
                 .padding(.horizontal, 16)
             connectButton
         }
+        .onAppear {
+            viewModel.gameId = ""
+        }
     }
     
     private var textFieldView: some View {
