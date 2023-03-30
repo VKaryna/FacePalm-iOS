@@ -18,7 +18,7 @@ class RealTimeGameManager: NSObject {
     
     private func connect(didReceive: @escaping NetworkMessage, gameId: String) {
         self.didReceive = didReceive
-        let url = URL(string: "ws://localhost:8080/websocket?gameId=\(gameId)")!
+        let url = URL(string: "wss://ws.justbookstudio.com?gameId=\(gameId)")!
         urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
         socket = urlSession?.webSocketTask(with: url)
     }
