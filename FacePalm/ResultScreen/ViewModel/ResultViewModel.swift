@@ -84,9 +84,6 @@ class ResultViewModel: ObservableObject {
         if gameState.isInProgress {
             showGameScreen = true
         }
-        if gameState.isFinished {
-            showHomeScreen = true
-        }
     }
     
     func unsubscribeFromGameUpdates() {
