@@ -19,16 +19,16 @@ struct GameScreen: View {
     }
 
     var body: some View {
-        VStack(spacing: 24) {
-            VStack {
-                readyToGoText
-                MemeImageView(imageName: viewModel.currentRound.round?.meme, roundNumber: viewModel.currentRound.roundNumber)
-                    .frame(height: 300)
-                makeYourDecisionText
+        GeometryReader { geometry in
+            VStack(spacing: 24) {
+                VStack {
+                    readyToGoText
+                    MemeImageView(imageName: viewModel.currentRound.round?.meme, roundNumber: viewModel.currentRound.roundNumber, height: geometry.size.height * 0.4)
+                    makeYourDecisionText
+                }
+                .padding(.horizontal, 24)
+                cards
             }
-            .padding(.horizontal, 24)
-            cards
-            Spacer()
         }
         .navigationBarBackButtonHidden()
         .activityIndicator(isInProgress: viewModel.activityIndicator)
@@ -85,16 +85,25 @@ struct GameScreen: View {
     }
     
     private var cards: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            LazyHStack(spacing: 12) {
-                ForEach(viewModel.currentPlayer.cardsToDisplay.indices, id: \.self) { index in
-                    let card = viewModel.currentPlayer.cardsToDisplay[index]
-                    GameCardView(showChooseCardErrorPopup: $showChooseCardErrorPopup, showWaitingForOthersPopup: $showWaitingForOthersPopup, text: card.text, cardIndex: index, cardId: card.id)
-                        .environmentObject(viewModel)
+        GeometryReader { geometry in
+            ScrollView(.vertical, showsIndicators: false) {
+                LazyVGrid(columns: columns(size: geometry.size), spacing: 20) {
+                    ForEach(viewModel.currentPlayer.cardsToDisplay.indices, id: \.self) { index in
+                        let card = viewModel.currentPlayer.cardsToDisplay[index]
+                        GameCardView(showChooseCardErrorPopup: $showChooseCardErrorPopup, showWaitingForOthersPopup: $showWaitingForOthersPopup, text: card.text, cardIndex: index, cardId: card.id, size: geometry.size)
+                            .environmentObject(viewModel)
+                    }
                 }
+                .padding([.horizontal, .bottom], 24)
             }
-            .padding(.horizontal, 24)
         }
+    }
+    
+    func columns(size: CGSize) -> [GridItem] {
+      [
+        GridItem(.adaptive(
+          minimum: Settings.thumbnailSize(size: size).width))
+      ]
     }
        
     private var readyToGoText: some View {

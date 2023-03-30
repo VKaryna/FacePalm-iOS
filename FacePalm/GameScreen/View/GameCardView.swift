@@ -15,6 +15,7 @@ struct GameCardView: View {
     let text: String
     let cardIndex: Int
     let cardId: Int
+    var size: CGSize = .zero
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -25,9 +26,11 @@ struct GameCardView: View {
             buttonView
         }
         .padding(8)
-        .frame(width: 200)
         .background(Color.fpCream)
         .cornerRadius(8)
+        .frame(
+          width: Settings.thumbnailSize(size: size).width,
+          height: Settings.thumbnailSize(size: size).height)
         .overlay(
             RoundedRectangle(cornerRadius: 5)
                 .stroke(lineWidth: 3)

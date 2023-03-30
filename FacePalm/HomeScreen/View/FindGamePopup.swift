@@ -32,6 +32,7 @@ struct FindGamePopup: View {
     
     private var textFieldView: some View {
         TextField("Enter game id", text: $viewModel.gameId)
+            .autocapitalization(.none)
     }
     
     private var titleView: some View {

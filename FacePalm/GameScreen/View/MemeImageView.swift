@@ -12,6 +12,7 @@ struct MemeImageView: View {
     
     let imageName: String?
     let roundNumber: Int?
+    let height: CGFloat
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -29,6 +30,8 @@ struct MemeImageView: View {
     private var memeImageView: some View {
         Image(imageName ?? "image1")
             .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(height: height)
     }
     
     private func roundView(_ round: Int) -> some View {

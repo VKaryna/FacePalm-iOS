@@ -19,15 +19,17 @@ struct VoteScreen: View {
     }
 
     var body: some View {
-        VStack(spacing: 24) {
-            VStack {
-                readyToGoText
-                MemeImageView(imageName: viewModel.currentRound.round?.meme, roundNumber: nil)
-                makeYourDecisionText
+        GeometryReader { geometry in
+            VStack(spacing: 24) {
+                VStack {
+                    readyToGoText
+                    MemeImageView(imageName: viewModel.currentRound.round?.meme, roundNumber: nil, height: geometry.size.height * 0.5)
+                    makeYourDecisionText
+                }
+                .padding(.horizontal, 24)
+                cards
+                Spacer()
             }
-            .padding(.horizontal, 24)
-            cards
-            Spacer()
         }
         .navigationBarBackButtonHidden()
         .activityIndicator(isInProgress: viewModel.activityIndicator)
