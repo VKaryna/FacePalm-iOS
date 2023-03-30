@@ -35,7 +35,7 @@ struct PlayersScreen: View {
                 playersListView
                 if viewModel.shouldShowStartButton {
                     startButton
-                } else if showReadyToGoButton {
+                } else {
                     readyToGoButton
                 }
             }
@@ -166,6 +166,7 @@ struct PlayersScreen: View {
         }
         .buttonStyle(.primary(color: Color.green))
         .frame(width: 140)
+        .opacity(showReadyToGoButton ? 1 : 0)
     }
     
     private var backgroundColor: some View {

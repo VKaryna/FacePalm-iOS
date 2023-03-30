@@ -85,18 +85,18 @@ struct VoteScreen: View {
         }
     }
     
+    private let columns: [GridItem] = [GridItem(.adaptive(minimum: .cardWidth))]
+    
     private var cards: some View {
-        GeometryReader { geometry in
-            ScrollView(.vertical, showsIndicators: false) {
-                LazyVGrid(columns: TextCardGridSettings.columns(size: geometry.size), spacing: 24) {
-                    ForEach(viewModel.voteCards.cardsToDisplay.indices, id: \.self) { index in
-                        let card = viewModel.voteCards.cardsToDisplay[index]
-                        VoteCardView(showVoteCardErrorPopup: $showVoteCardErrorPopup, showWaitingForOthersPopup: $showWaitingForOthersPopup, text: card.text, cardIndex: index, cardId: card.id, size: geometry.size)
-                            .environmentObject(viewModel)
-                    }
+        ScrollView(.vertical, showsIndicators: false) {
+            LazyVGrid(columns: columns, spacing: 24) {
+                ForEach(viewModel.voteCards.cardsToDisplay.indices, id: \.self) { index in
+                    let card = viewModel.voteCards.cardsToDisplay[index]
+                    VoteCardView(showVoteCardErrorPopup: $showVoteCardErrorPopup, showWaitingForOthersPopup: $showWaitingForOthersPopup, text: card.text, cardIndex: index, cardId: card.id)
+                        .environmentObject(viewModel)
                 }
-                .padding(.horizontal, 24)
             }
+            .padding(.horizontal, 24)
         }
     }
        
