@@ -403,18 +403,18 @@
 			isa = PBXGroup;
 			children = (
 				E9DB220129B3644700D25400 /* Info.plist */,
-				E933594D29AFEC0200272B42 /* WelcomeScreen */,
-				E933594829AFE54600272B42 /* AppNavigation */,
-				E9147F2B2996FBD200D20DDE /* ResultScreen */,
-				E9FAD8EC2995708D00064768 /* VoteScreen */,
-				E96AA4C72993E0600012D220 /* Core */,
 				E92A254E297B6AB500404752 /* Supporting Files */,
+				E933594829AFE54600272B42 /* AppNavigation */,
+				E92A254B297B6AA300404752 /* CoreUI */,
+				E96AA4C72993E0600012D220 /* Core */,
 				E9692A252991810C007BFC54 /* CoreModel */,
 				E9692A24299180C6007BFC54 /* CoreNetwork */,
-				E92A254B297B6AA300404752 /* CoreUI */,
+				E933594D29AFEC0200272B42 /* WelcomeScreen */,
 				E9F98C1C299054E400408787 /* HomeScreen */,
 				E9692A1B29917DC2007BFC54 /* PlayersScreen */,
 				E987EFD3297B4F490070EC87 /* GameScreen */,
+				E9FAD8EC2995708D00064768 /* VoteScreen */,
+				E9147F2B2996FBD200D20DDE /* ResultScreen */,
 			);
 			path = FacePalm;
 			sourceTree = "<group>";
