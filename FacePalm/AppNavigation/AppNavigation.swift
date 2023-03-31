@@ -8,5 +8,5 @@
 import SwiftUI
 
 class AppNavigation: ObservableObject {
-    @Published var path = NavigationPath()
+    @Published var path: [Screen] = []
 }

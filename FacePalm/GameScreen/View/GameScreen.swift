@@ -78,8 +78,6 @@ struct GameScreen: View {
             }
         }
         .onDisappear {
-            showWaitingForOthersPopup = false
-            viewModel.showVoteScreen = false
             viewModel.unsubscribeFromGameUpdates()
         }
     }
