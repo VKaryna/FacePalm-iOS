@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct FacePalmApp: App {
-    
     @StateObject private var navigation: AppNavigation = AppNavigation()
 
     var body: some Scene {
