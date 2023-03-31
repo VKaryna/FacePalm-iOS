@@ -94,6 +94,7 @@ struct GameScreen: View {
                 }
             }
             .padding([.horizontal, .bottom], 24)
+            .animation(.easeInOut, value: viewModel.currentPlayer.cardsToDisplay)
         }
     }
        

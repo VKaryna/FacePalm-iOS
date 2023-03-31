@@ -38,7 +38,7 @@ struct Popup<PopupContent>: ViewModifier where PopupContent: View {
     @ViewBuilder
     private func popupContent() -> some View {
         content()
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: 500)
             .padding(.vertical, 16)
             .background(Color.fpCream)
             .cornerRadius(8)

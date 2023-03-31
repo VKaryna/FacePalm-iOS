@@ -17,7 +17,7 @@ struct CurrentPlayer {
     }
     
     var cardsToDisplay: [Card] {
-        player?.cards.filter { card in !chosenCards.contains(card)} ?? []
+        player?.cards.filter { card in !chosenCards.contains(card) } ?? []
     }
     
     var playerCards: [Card] {

@@ -17,9 +17,11 @@ struct VoteCardView: View {
     let cardId: Int
     
     var body: some View {
-        VStack(alignment: .leading) {
-            textView
-            Spacer()
+        ZStack(alignment: .bottom) {
+            ScrollView {
+                textView
+                buttonView.opacity(0)
+            }
             buttonView
         }
         .padding(8)
@@ -27,7 +29,7 @@ struct VoteCardView: View {
         .cornerRadius(8)
         .frame(
             width: .cardWidth,
-            height: .cardWidth
+            height: .cardHeight
         )
         .overlay(
             RoundedRectangle(cornerRadius: 5)

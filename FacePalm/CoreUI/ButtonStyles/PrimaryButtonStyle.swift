@@ -13,7 +13,7 @@ struct PrimaryButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: 600)
             .font(.futuraMedium(size: 20))
             .padding(10)
             .foregroundColor(configuration.isPressed ? Color.white.opacity(0.5) : Color.white)

@@ -47,6 +47,7 @@ class VoteViewModel: ObservableObject {
         activityIndicator = true
         game = try await manager.findGame(gameId: game.gameId)
         activityIndicator = false
+        subscribeToGameUpdates()
     }
     
     func voteCard(cardId: Int) async throws {

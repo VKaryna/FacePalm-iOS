@@ -73,7 +73,6 @@ struct VoteScreen: View {
         .task {
             do {
                 try await viewModel.findGame()
-                viewModel.subscribeToGameUpdates() // The same as on GameScreen.
             } catch {
                 showFindGameErrorPopup = true
             }
@@ -94,7 +93,8 @@ struct VoteScreen: View {
                         .environmentObject(viewModel)
                 }
             }
-            .padding(.horizontal, 24)
+            .padding([.horizontal, .bottom], 24)
+            .animation(.easeInOut, value: viewModel.currentPlayer.cardsToDisplay)
         }
     }
        
