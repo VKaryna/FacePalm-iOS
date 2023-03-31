@@ -63,6 +63,9 @@ class ResultViewModel: ObservableObject {
     
     func moveToNextRound() async throws {
         game = try await manager.moveToNextRound(gameId: game.gameId)
+        if gameState.isFinished {
+            showHomeScreen = true
+        }
     }
     
     func subscribeToGameUpdates(attempt: Int = 0) {

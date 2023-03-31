@@ -28,7 +28,7 @@ struct ResultScreen: View {
         VStack(spacing: 36) {
             titleView
             playersListView
-            if (viewModel.shouldShowContinueButton) {
+            if viewModel.shouldShowContinueButton {
                 continueButton
             }
         }
