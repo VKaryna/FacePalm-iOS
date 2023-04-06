@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct PlayersScreen: View {
-    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var navigation: AppNavigation
     @StateObject private var viewModel: PlayersViewModel
     @State private var showJoinGamePopup = false
@@ -61,7 +60,9 @@ struct PlayersScreen: View {
         }
         .popup(isPresented: $showDefaultErrorPopup) {
             ErrorPopup(isPresented: $showDefaultErrorPopup, title: "Error 🥲", description: "Something went wrong!", buttonText: "Ok")
-                .onDisappear(perform: dismiss.callAsFunction)
+                .onDisappear {
+                    navigation.path.removeLast()
+                }
         }
         .onReceive(viewModel.$showGameScreen) { shouldShow in
             if shouldShow == true {
