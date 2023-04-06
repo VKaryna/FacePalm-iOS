@@ -46,7 +46,7 @@ struct PlayersScreen: View {
         }
         .navigationBarBackButtonHidden()
         .ignoresSafeArea()
-        .popup(isPresented: $showJoinGamePopup) {
+        .popup(isPresented: .constant(showJoinGamePopup)) {
             JoinGamePopup(isPresented: $showJoinGamePopup, showDefaultErrorPopup: $showDefaultErrorPopup)
                 .environmentObject(viewModel)
         }
