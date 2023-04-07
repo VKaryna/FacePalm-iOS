@@ -52,6 +52,7 @@
 		E9967CAC298ED942007B71CA /* SecondaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9967CAB298ED942007B71CA /* SecondaryButtonStyle.swift */; };
 		E9C01C1F299EF74800EB9148 /* JoinGameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C01C1E299EF74800EB9148 /* JoinGameResponse.swift */; };
 		E9C4933629E039C9006C15E2 /* OnReceiveWhileVisible.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C4933529E039C9006C15E2 /* OnReceiveWhileVisible.swift */; };
+		E9C4933929E03D09006C15E2 /* GameNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C4933829E03D09006C15E2 /* GameNotificationsManager.swift */; };
 		E9CB939229E00B13004959FB /* GameNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB939129E00B13004959FB /* GameNotifications.swift */; };
 		E9DB21FC29B35BFA00D25400 /* AppUnavailablePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DB21FB29B35BFA00D25400 /* AppUnavailablePopupView.swift */; };
 		E9E5FB3529903212004A4676 /* StartGameBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E5FB3429903212004A4676 /* StartGameBody.swift */; };
@@ -128,6 +129,7 @@
 		E9967CAB298ED942007B71CA /* SecondaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButtonStyle.swift; sourceTree = "<group>"; };
 		E9C01C1E299EF74800EB9148 /* JoinGameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JoinGameResponse.swift; path = ../../CoreNetwork/JoinGameResponse.swift; sourceTree = "<group>"; };
 		E9C4933529E039C9006C15E2 /* OnReceiveWhileVisible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnReceiveWhileVisible.swift; sourceTree = "<group>"; };
+		E9C4933829E03D09006C15E2 /* GameNotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNotificationsManager.swift; sourceTree = "<group>"; };
 		E9CB939129E00B13004959FB /* GameNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNotifications.swift; sourceTree = "<group>"; };
 		E9DB21FB29B35BFA00D25400 /* AppUnavailablePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUnavailablePopupView.swift; sourceTree = "<group>"; };
 		E9DB220129B3644700D25400 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -471,9 +473,18 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		E9C4933729E03CEE006C15E2 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E9C4933829E03D09006C15E2 /* GameNotificationsManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		E9CB939029E00B01004959FB /* GameNotification */ = {
 			isa = PBXGroup;
 			children = (
+				E9C4933729E03CEE006C15E2 /* Network */,
 				E9CB939129E00B13004959FB /* GameNotifications.swift */,
 			);
 			path = GameNotification;
@@ -633,6 +644,7 @@
 			files = (
 				E9E5FB3D29903AF0004A4676 /* CardResponse.swift in Sources */,
 				E933594729AFD28700272B42 /* ActivityIndicatorModifier.swift in Sources */,
+				E9C4933929E03D09006C15E2 /* GameNotificationsManager.swift in Sources */,
 				E99443CD297CA73000DBB9EA /* GameViewModel.swift in Sources */,
 				E9967CA6298EC956007B71CA /* Game.swift in Sources */,
 				E9692A2129917F06007BFC54 /* PlayersViewModel.swift in Sources */,

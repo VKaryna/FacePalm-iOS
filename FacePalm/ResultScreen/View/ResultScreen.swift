@@ -96,7 +96,6 @@ struct ResultScreen: View {
         .task {
             do {
                 try await viewModel.findGame()
-                viewModel.subscribeToGameUpdates()
                 showWinnersPopup = true
             } catch {
                 showFindGameErrorPopup = true
@@ -162,6 +161,7 @@ struct ResultScreen: View {
                     showNextRoundErrorPopup = true
                 }
             } else {
+                gameNotifications.unsubscribeFromGameUpdates()
                 viewModel.showHomeScreen = true
             }
         } label: {

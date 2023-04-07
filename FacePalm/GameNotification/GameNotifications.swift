@@ -14,7 +14,9 @@ final class GameNotifications: ObservableObject {
     // MARK: - Properties
     
     private let subscriptionManager = RealTimeGameManager()
+    private let manager = GameNotificationsManager()
     private let gamePublisher = PassthroughSubject<Game, Never>()
+    private var subscribedGameId: String?
     
     // MARK: - Outputs
     
@@ -23,6 +25,14 @@ final class GameNotifications: ObservableObject {
     }
     
     // MARK: - Intents
+    
+    func refreshGameState() {
+        guard let gameId = subscribedGameId else { return }
+        Task {
+            let game = try await manager.findGame(gameId: gameId)
+            gamePublisher.send(game)
+        }
+    }
     
     func subscribeToGameUpdates(gameId: String, attempt: Int = 0) {
         subscriptionManager.establishConnection(gameId: gameId) { [weak self] result in
