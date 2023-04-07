@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WelcomeScreen: View {
     @EnvironmentObject private var navigation: AppNavigation
+    @StateObject private var gameNotifications = GameNotifications()
     @State private var showGenericErrorPopup = false
 
     var body: some View {
@@ -25,8 +26,10 @@ struct WelcomeScreen: View {
                 switch screen {
                 case .players(let gameId):
                     PlayersScreen(gameId: gameId)
+                        .environmentObject(gameNotifications)
                 case .game(let gameId, let playerId):
                     GameScreen(gameId: gameId, playerId: playerId)
+                        .environmentObject(gameNotifications)
                 case .vote(let gameId, let playerId):
                     VoteScreen(gameId: gameId, playerId: playerId)
                 case .results(let gameId, let playerId):

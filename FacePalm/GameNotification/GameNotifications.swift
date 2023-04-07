@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 @MainActor
 final class GameNotifications: ObservableObject {
@@ -13,27 +14,24 @@ final class GameNotifications: ObservableObject {
     // MARK: - Properties
     
     private let subscriptionManager = RealTimeGameManager()
+    private let gamePublisher = PassthroughSubject<Game, Never>()
     
     // MARK: - Outputs
     
-    @Published var game: Game
-    
-    // MARK: - Inits
-    
-    init(gameId: String) {
-        _game = Published(wrappedValue: Game(gameId: gameId))
+    var game: AnyPublisher<Game, Never> {
+        gamePublisher.eraseToAnyPublisher()
     }
     
     // MARK: - Intents
     
-    func subscribeToGameUpdates(attempt: Int = 0) {
-        subscriptionManager.establishConnection(gameId: game.gameId) { [weak self] result in
+    func subscribeToGameUpdates(gameId: String, attempt: Int = 0) {
+        subscriptionManager.establishConnection(gameId: gameId) { [weak self] result in
             switch result {
             case .success(let game):
-                self?.game = game
+                self?.gamePublisher.send(game)
             case .failure where attempt < 3:
                 self?.unsubscribeFromGameUpdates()
-                self?.subscribeToGameUpdates(attempt: attempt + 1)
+                self?.subscribeToGameUpdates(gameId: gameId, attempt: attempt + 1)
             case .failure:
                 self?.unsubscribeFromGameUpdates()
             }

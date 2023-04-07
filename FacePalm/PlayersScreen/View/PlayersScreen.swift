@@ -9,8 +9,8 @@ import SwiftUI
 
 struct PlayersScreen: View {
     @EnvironmentObject private var navigation: AppNavigation
+    @EnvironmentObject private var gameNotifications: GameNotifications
     @StateObject private var viewModel: PlayersViewModel
-    @StateObject private var gameNotifications: GameNotifications
     @State private var showJoinGamePopup = false
     @State private var showReadyToGoButton = true
     @State private var showWaitingForOwnerStartPopup = false
@@ -20,7 +20,6 @@ struct PlayersScreen: View {
     
     init(gameId: String) {
         _viewModel = StateObject(wrappedValue: PlayersViewModel(gameId: gameId))
-        _gameNotifications = StateObject(wrappedValue: GameNotifications(gameId: gameId))
     }
 
     let columns = [
@@ -75,7 +74,7 @@ struct PlayersScreen: View {
                 )
             }
         }
-        .onReceive(gameNotifications.$game) { game in
+        .onReceive(gameNotifications.game) { game in
             viewModel.onGameNotification(game)
         }
         .onAppear {

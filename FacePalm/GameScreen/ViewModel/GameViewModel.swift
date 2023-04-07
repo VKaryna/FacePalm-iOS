@@ -18,7 +18,6 @@ class GameViewModel: ObservableObject {
     @Published var activityIndicator: Bool = true
     
     private let manager = GameNetworkManager()
-    private let subscriptionManager = RealTimeGameManager()
     
     private var gameState: GameState {
         GameState(game: game)
@@ -47,7 +46,6 @@ class GameViewModel: ObservableObject {
         activityIndicator = true
         game = try await manager.findGame(gameId: game.gameId)
         activityIndicator = false
-        subscribeToGameUpdates()
     }
     
     func chooseCard(cardId: Int) async throws {
@@ -56,28 +54,14 @@ class GameViewModel: ObservableObject {
         }
     }
     
-    func subscribeToGameUpdates(attempt: Int = 0) {
-        subscriptionManager.establishConnection(gameId: game.gameId) { [weak self] result in
-            switch result {
-            case .success(let game):
-                self?.game = game
-                self?.checkMovingToTheNextScreen()
-            case .failure where attempt < 3:
-                self?.unsubscribeFromGameUpdates()
-                self?.subscribeToGameUpdates(attempt: attempt + 1)
-            case .failure:
-                self?.unsubscribeFromGameUpdates()
-            }
-        }
-    }
-    
-    func unsubscribeFromGameUpdates() {
-        subscriptionManager.disconnect()
-    }
-    
     func checkMovingToTheNextScreen() {
         if gameState.isVoting {
             showVoteScreen = true
         }
+    }
+    
+    func onGameNotification(_ game: Game) {
+        self.game = game
+        checkMovingToTheNextScreen()
     }
 }
