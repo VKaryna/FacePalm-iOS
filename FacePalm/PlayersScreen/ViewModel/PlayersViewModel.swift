@@ -12,7 +12,6 @@ import SwiftUI
 class PlayersViewModel: ObservableObject {
     
     private let manager = PlayersNetworkManager()
-    private let subscriptionManager = RealTimeGameManager()
     
     private var gameState: GameState {
         GameState(game: game)
@@ -42,25 +41,6 @@ class PlayersViewModel: ObservableObject {
     var shouldShowStartButton: Bool {
         playerId == game.ownerId && game.ownerId != nil
     }
-        
-    func subscribeToGameUpdates(attempt: Int = 0) {
-        subscriptionManager.establishConnection(gameId: game.gameId) { [weak self] result in
-            switch result {
-            case .success(let game):
-                self?.game = game
-                self?.checkGameStart()
-            case .failure where attempt < 3:
-                self?.unsubscribeFromGameUpdates()
-                self?.subscribeToGameUpdates(attempt: attempt + 1)
-            case .failure:
-                self?.unsubscribeFromGameUpdates()
-            }
-        }
-    }
-    
-    func unsubscribeFromGameUpdates() {
-        subscriptionManager.disconnect()
-    }
     
     func startGame() async throws {
         game = try await manager.startGame(gameId: game.gameId)
@@ -70,7 +50,6 @@ class PlayersViewModel: ObservableObject {
         let result = try await manager.joinGame(gameId: game.gameId, playerName: playerName)
         game = result.game
         playerId = result.playerId
-        subscribeToGameUpdates()
     }
     
     func becomeReady() async throws {
@@ -81,5 +60,10 @@ class PlayersViewModel: ObservableObject {
         if gameState.isInProgress {
             showGameScreen = true
         }
+    }
+    
+    func onGameNotification(_ game: Game) {
+        self.game = game
+        checkGameStart()
     }
 }

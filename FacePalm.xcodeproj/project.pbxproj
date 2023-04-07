@@ -51,6 +51,7 @@
 		E9967CAA298ED10D007B71CA /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9967CA9298ED10D007B71CA /* GameScreen.swift */; };
 		E9967CAC298ED942007B71CA /* SecondaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9967CAB298ED942007B71CA /* SecondaryButtonStyle.swift */; };
 		E9C01C1F299EF74800EB9148 /* JoinGameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C01C1E299EF74800EB9148 /* JoinGameResponse.swift */; };
+		E9CB939229E00B13004959FB /* GameNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB939129E00B13004959FB /* GameNotifications.swift */; };
 		E9DB21FC29B35BFA00D25400 /* AppUnavailablePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DB21FB29B35BFA00D25400 /* AppUnavailablePopupView.swift */; };
 		E9E5FB3529903212004A4676 /* StartGameBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E5FB3429903212004A4676 /* StartGameBody.swift */; };
 		E9E5FB3729903729004A4676 /* CheckPlayersReadiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E5FB3629903729004A4676 /* CheckPlayersReadiness.swift */; };
@@ -125,6 +126,7 @@
 		E9967CA9298ED10D007B71CA /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
 		E9967CAB298ED942007B71CA /* SecondaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButtonStyle.swift; sourceTree = "<group>"; };
 		E9C01C1E299EF74800EB9148 /* JoinGameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JoinGameResponse.swift; path = ../../CoreNetwork/JoinGameResponse.swift; sourceTree = "<group>"; };
+		E9CB939129E00B13004959FB /* GameNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNotifications.swift; sourceTree = "<group>"; };
 		E9DB21FB29B35BFA00D25400 /* AppUnavailablePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUnavailablePopupView.swift; sourceTree = "<group>"; };
 		E9DB220129B3644700D25400 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E9E5FB3429903212004A4676 /* StartGameBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameBody.swift; sourceTree = "<group>"; };
@@ -415,6 +417,7 @@
 				E987EFD3297B4F490070EC87 /* GameScreen */,
 				E9FAD8EC2995708D00064768 /* VoteScreen */,
 				E9147F2B2996FBD200D20DDE /* ResultScreen */,
+				E9CB939029E00B01004959FB /* GameNotification */,
 			);
 			path = FacePalm;
 			sourceTree = "<group>";
@@ -463,6 +466,14 @@
 				E9F98C22299057E500408787 /* ErrorPopup.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E9CB939029E00B01004959FB /* GameNotification */ = {
+			isa = PBXGroup;
+			children = (
+				E9CB939129E00B13004959FB /* GameNotifications.swift */,
+			);
+			path = GameNotification;
 			sourceTree = "<group>";
 		};
 		E9F80E1229AEC22A0046516E /* Model */ = {
@@ -683,6 +694,7 @@
 				E933594529AFB70300272B42 /* URL+appendingPathComponents.swift in Sources */,
 				E933594F29AFEC0B00272B42 /* WelcomeScreen.swift in Sources */,
 				E9FE447B29B2A748009BA7C0 /* WaitingAllReadyPopup.swift in Sources */,
+				E9CB939229E00B13004959FB /* GameNotifications.swift in Sources */,
 				E9FE447F29B2B444009BA7C0 /* WinnersPopup.swift in Sources */,
 				E987EFD7297B4F7F0070EC87 /* HomeScreen.swift in Sources */,
 			);
