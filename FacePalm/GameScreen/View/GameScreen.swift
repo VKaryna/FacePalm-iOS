@@ -71,7 +71,7 @@ struct GameScreen: View {
                 )
             }
         }
-        .onReceive(gameNotifications.game) { game in
+        .onReceiveWhileVisible(gameNotifications.game) { game in
             viewModel.onGameNotification(game)
         }
         .task {
