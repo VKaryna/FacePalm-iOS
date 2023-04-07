@@ -17,7 +17,7 @@ With easy-to-use controls and intuitive gameplay, FacePalm - Meme Battle is the 
 
 ### App Store
 
-https://apps.apple.com/de/app/facepalm-meme-battle/id6447070545?l=en
+https://apps.apple.com/de/app/facepalm-meme-battle/id6447070545
 
 ### LinkedIn
 
