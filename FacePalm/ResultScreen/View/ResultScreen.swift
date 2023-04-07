@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ResultScreen: View {
     @EnvironmentObject private var navigation: AppNavigation
+    @EnvironmentObject private var gameNotifications: GameNotifications
     @StateObject private var viewModel: ResultViewModel
     @State private var showGameWinnersPopup = false
     @State private var showWinnersPopup = false
@@ -89,6 +90,9 @@ struct ResultScreen: View {
                 navigation.path.append(.game(gameId: viewModel.game.gameId, playerId: viewModel.playerId))
             }
         }
+        .onReceiveWhileVisible(gameNotifications.game) { game in
+            viewModel.onGameNotifications(game)
+        }
         .task {
             do {
                 try await viewModel.findGame()
@@ -97,9 +101,6 @@ struct ResultScreen: View {
             } catch {
                 showFindGameErrorPopup = true
             }
-        }
-        .onDisappear {
-            viewModel.unsubscribeFromGameUpdates()
         }
     }
     

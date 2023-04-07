@@ -32,6 +32,7 @@ struct WelcomeScreen: View {
                         .environmentObject(gameNotifications)
                 case .vote(let gameId, let playerId):
                     VoteScreen(gameId: gameId, playerId: playerId)
+                        .environmentObject(gameNotifications)
                 case .results(let gameId, let playerId):
                     ResultScreen(gameId: gameId, playerId: playerId)
                 case .home:
