@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PlayersScreen: View {
     @EnvironmentObject private var navigation: AppNavigation
+    @EnvironmentObject private var gameNotifications: GameNotifications
     @StateObject private var viewModel: PlayersViewModel
     @State private var showJoinGamePopup = false
     @State private var showReadyToGoButton = true
@@ -48,6 +49,7 @@ struct PlayersScreen: View {
         .popup(isPresented: .constant(showJoinGamePopup)) {
             JoinGamePopup(isPresented: $showJoinGamePopup, showDefaultErrorPopup: $showDefaultErrorPopup)
                 .environmentObject(viewModel)
+                .environmentObject(gameNotifications)
         }
         .popup(isPresented: $showWaitingMorePlayersPopup) {
             WaitingMorePlayersPopup(isPresented: $showWaitingMorePlayersPopup, playersCount: viewModel.game.players.count)
@@ -72,11 +74,11 @@ struct PlayersScreen: View {
                 )
             }
         }
+        .onReceiveWhileVisible(gameNotifications.game) { game in
+            viewModel.onGameNotification(game)
+        }
         .onAppear {
             showJoinGamePopup = true
-        }
-        .onDisappear {
-            viewModel.unsubscribeFromGameUpdates()
         }
     }
     

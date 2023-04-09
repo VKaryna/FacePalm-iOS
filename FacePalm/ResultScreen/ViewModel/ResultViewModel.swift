@@ -15,7 +15,6 @@ class ResultViewModel: ObservableObject {
     @Published var activityIndicator = true
 
     private let manager = ResultNetworkManager()
-    private let subscriptionManager = RealTimeGameManager()
     var playerId = 0
     
     private var gameState: GameState {
@@ -68,32 +67,18 @@ class ResultViewModel: ObservableObject {
         }
     }
     
-    func subscribeToGameUpdates(attempt: Int = 0) {
-        subscriptionManager.establishConnection(gameId: game.gameId) { [weak self] result in
-            switch result {
-            case .success(let game):
-                self?.game = game
-                self?.checkMovingToTheNextScreen()
-            case .failure where attempt < 3:
-                self?.unsubscribeFromGameUpdates()
-                self?.subscribeToGameUpdates(attempt: attempt + 1)
-            case .failure:
-                self?.unsubscribeFromGameUpdates()
-            }
-        }
-    }
-    
     func checkMovingToTheNextScreen() {
         if gameState.isInProgress {
             showGameScreen = true
         }
     }
     
-    func unsubscribeFromGameUpdates() {
-        subscriptionManager.disconnect()
-    }
-    
     func getTotalPoints(for playerId: Int) -> Int {
         CurrentPlayer(playerId: playerId, players: game.players, rounds: game.rounds).totalPoints
+    }
+    
+    func onGameNotifications(_ game: Game) {
+        self.game = game
+        checkMovingToTheNextScreen()
     }
 }

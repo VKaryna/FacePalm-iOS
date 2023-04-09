@@ -9,6 +9,7 @@ import SwiftUI
 
 struct VoteScreen: View {
     @EnvironmentObject private var navigation: AppNavigation
+    @EnvironmentObject private var gameNotifications: GameNotifications
     @StateObject private var viewModel: VoteViewModel
     @State private var showFindGameErrorPopup = false
     @State private var showVoteCardErrorPopup = false
@@ -70,15 +71,15 @@ struct VoteScreen: View {
                 )
             }
         }
+        .onReceiveWhileVisible(gameNotifications.game) { game in
+            viewModel.onGameNotification(game)
+        }
         .task {
             do {
                 try await viewModel.findGame()
             } catch {
                 showFindGameErrorPopup = true
             }
-        }
-        .onDisappear {
-            viewModel.unsubscribeFromGameUpdates()
         }
     }
     

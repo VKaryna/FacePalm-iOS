@@ -9,6 +9,7 @@ import SwiftUI
 
 struct JoinGamePopup: View {
     @EnvironmentObject private var viewModel: PlayersViewModel
+    @EnvironmentObject private var gameNotifications: GameNotifications
     
     @Binding var isPresented: Bool
     @Binding var showDefaultErrorPopup: Bool
@@ -54,6 +55,7 @@ struct JoinGamePopup: View {
         LoadingButton() {
             do {
                 try await viewModel.joinGame(playerName: playerName)
+                gameNotifications.subscribeToGameUpdates(gameId: viewModel.game.gameId)
                 isPresented = false
             } catch is UserAlreadyExistsError {
                 showErrorMessage = true

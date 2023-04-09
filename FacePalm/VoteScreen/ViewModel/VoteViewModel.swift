@@ -10,7 +10,6 @@ import Foundation
 @MainActor
 class VoteViewModel: ObservableObject {
     private let manager = VoteNetworkManager()
-    private let subscriptionManager = RealTimeGameManager()
     var playerId = 0
 
     @Published var showResultScreen: Bool = false
@@ -47,27 +46,11 @@ class VoteViewModel: ObservableObject {
         activityIndicator = true
         game = try await manager.findGame(gameId: game.gameId)
         activityIndicator = false
-        subscribeToGameUpdates()
     }
     
     func voteCard(cardId: Int) async throws {
         if let roundId = currentRound.round?.id {
             game = try await manager.voteCard(cardId: cardId, playerId: playerId, roundId: roundId, gameId: game.gameId)
-        }
-    }
-    
-    func subscribeToGameUpdates(attempt: Int = 0) {
-        subscriptionManager.establishConnection(gameId: game.gameId) { [weak self] result in
-            switch result {
-            case .success(let game):
-                self?.game = game
-                self?.checkRoundEnd()
-            case .failure where attempt < 3:
-                self?.unsubscribeFromGameUpdates()
-                self?.subscribeToGameUpdates(attempt: attempt + 1)
-            case .failure:
-                self?.unsubscribeFromGameUpdates()
-            }
         }
     }
     
@@ -77,7 +60,8 @@ class VoteViewModel: ObservableObject {
         }
     }
     
-    func unsubscribeFromGameUpdates() {
-        subscriptionManager.disconnect()
+    func onGameNotification(_ game: Game) {
+        self.game = game
+        checkRoundEnd()
     }
 }

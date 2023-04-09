@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct WelcomeScreen: View {
+    @Environment(\.scenePhase) var scenePhase
     @EnvironmentObject private var navigation: AppNavigation
+    @StateObject private var gameNotifications = GameNotifications()
     @State private var showGenericErrorPopup = false
 
     var body: some View {
@@ -25,12 +27,16 @@ struct WelcomeScreen: View {
                 switch screen {
                 case .players(let gameId):
                     PlayersScreen(gameId: gameId)
+                        .environmentObject(gameNotifications)
                 case .game(let gameId, let playerId):
                     GameScreen(gameId: gameId, playerId: playerId)
+                        .environmentObject(gameNotifications)
                 case .vote(let gameId, let playerId):
                     VoteScreen(gameId: gameId, playerId: playerId)
+                        .environmentObject(gameNotifications)
                 case .results(let gameId, let playerId):
                     ResultScreen(gameId: gameId, playerId: playerId)
+                        .environmentObject(gameNotifications)
                 case .home:
                     HomeScreen()
                 }
@@ -40,6 +46,14 @@ struct WelcomeScreen: View {
             }
             .onAppear {
                 navigation.path.append(Screen.home)
+            }
+            .onChange(of: scenePhase) { newPhase in
+                switch newPhase {
+                case .active:
+                    gameNotifications.refreshGameState()
+                default:
+                    print("LOG: Phase: \(newPhase)")
+                }
             }
         }
     }
