@@ -49,6 +49,9 @@ struct PlayersScreen: View {
             ToolbarItem(placement: .navigationBarLeading) {
                 closeButton
             }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                shareButton
+            }
         }
         .ignoresSafeArea()
         .popup(isPresented: .constant(showJoinGamePopup)) {
@@ -194,9 +197,18 @@ struct PlayersScreen: View {
         } label: {
             Image(systemName: "xmark")
                 .resizable()
-                .frame(width: 14, height: 14)
+                .font(.system(size: 14))
                 .foregroundColor(.fpGray)
                 .fontWeight(.bold)
+        }
+    }
+    
+    private var shareButton: some View {
+        ShareLink(item: "\(viewModel.game.gameId)") {
+            Image(systemName: "square.and.arrow.up")
+                .resizable()
+                .font(.system(size: 14))
+                .foregroundColor(.fpGray)
         }
     }
 }
