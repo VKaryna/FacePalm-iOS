@@ -35,6 +35,7 @@ final class GameNotifications: ObservableObject {
     }
     
     func subscribeToGameUpdates(gameId: String, attempt: Int = 0) {
+        subscribedGameId = gameId
         subscriptionManager.establishConnection(gameId: gameId) { [weak self] result in
             switch result {
             case .success(let game):
@@ -49,6 +50,7 @@ final class GameNotifications: ObservableObject {
     }
     
     func unsubscribeFromGameUpdates() {
+        subscribedGameId = nil
         subscriptionManager.disconnect()
     }
 }

@@ -52,7 +52,7 @@ struct WelcomeScreen: View {
                 case .active:
                     gameNotifications.refreshGameState()
                 default:
-                    print("LOG: Phase: \(newPhase)")
+                    break
                 }
             }
         }
