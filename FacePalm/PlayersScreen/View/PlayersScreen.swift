@@ -45,6 +45,11 @@ struct PlayersScreen: View {
             .padding(.horizontal, 16)
         }
         .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                closeButton
+            }
+        }
         .ignoresSafeArea()
         .popup(isPresented: .constant(showJoinGamePopup)) {
             JoinGamePopup(isPresented: $showJoinGamePopup, showDefaultErrorPopup: $showDefaultErrorPopup)
@@ -181,6 +186,18 @@ struct PlayersScreen: View {
             endPoint: .bottom
         )
         .ignoresSafeArea()
+    }
+    
+    private var closeButton: some View {
+        Button {
+            navigation.path.removeLast()
+        } label: {
+            Image(systemName: "xmark")
+                .resizable()
+                .frame(width: 14, height: 14)
+                .foregroundColor(.fpGray)
+                .fontWeight(.bold)
+        }
     }
 }
 
