@@ -29,9 +29,9 @@ struct ResultScreen: View {
         VStack(spacing: 36) {
             titleView
             playersListView
-            if viewModel.shouldShowContinueButton {
-                continueButton
-            }
+            continueButton
+                .opacity(viewModel.shouldShowContinueButton ? 1 : 0)
+                .animation(nil, value: viewModel.shouldShowContinueButton)
         }
         .padding(.vertical, 16)
         .background(Color.fpCream)
