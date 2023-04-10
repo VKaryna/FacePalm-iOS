@@ -192,8 +192,14 @@ struct PlayersScreen: View {
     }
     
     private var closeButton: some View {
-        Button {
-            navigation.path.removeLast()
+        LoadingButton {
+            do {
+                gameNotifications.unsubscribeFromGameUpdates()
+                try await viewModel.leaveGame()
+                navigation.path.removeLast()
+            } catch {
+                showDefaultErrorPopup = true
+            }
         } label: {
             Image(systemName: "xmark")
                 .resizable()

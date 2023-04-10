@@ -42,5 +42,5 @@ extension NetworkEnvironment {
 
 private extension URL {
     static let production = URL(string: "https://api.justbookstudio.com/facepalm/api")!
-    static let develop = URL(string: "https://api.justbookstudio.com/facepalm/api")!
+    static let develop = URL(string: "http://localhost:8081/facepalm/api")!
 }

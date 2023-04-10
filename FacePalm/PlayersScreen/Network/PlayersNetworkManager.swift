@@ -28,6 +28,23 @@ class PlayersNetworkManager {
         return (playerId: response.playerId, Game(response: response.game))
     }
     
+    func leaveGame(gameId: String, playerName: String) async throws {
+        let url = networkEnvironment.url.appendingPathComponents("leave_game")
+        var request = URLRequest(url: url)
+
+        request.httpMethod = "PUT"
+        request.httpBody = LeaveGameBody(gameId: gameId, playerName: playerName).data
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let (_, urlResponse) = try await URLSession.shared.data(for: request)
+
+        if let httpURLResponse = urlResponse as? HTTPURLResponse {
+            if httpURLResponse.statusCode != 200 {
+                throw LeaveGameError()
+            }
+        }
+    }
+    
     func startGame(gameId: String) async throws -> Game {
         let url = networkEnvironment.url.appendingPathComponents("start_game")
         var request = URLRequest(url: url)

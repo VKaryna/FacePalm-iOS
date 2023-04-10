@@ -30,6 +30,9 @@ class PlayersViewModel: ObservableObject {
     }
     
     var playerId = 0
+    var playerName: String? {
+        game.players.first(where: { $0.id == playerId })?.name
+    }
 
     @Published var game: Game
     @Published var showGameScreen: Bool = false
@@ -50,6 +53,11 @@ class PlayersViewModel: ObservableObject {
         let result = try await manager.joinGame(gameId: game.gameId, playerName: playerName)
         game = result.game
         playerId = result.playerId
+    }
+    
+    func leaveGame() async throws {
+        guard let playerName = playerName else { return }
+        _ = try await manager.leaveGame(gameId: game.gameId, playerName: playerName)
     }
     
     func becomeReady() async throws {
