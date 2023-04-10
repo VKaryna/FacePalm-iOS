@@ -19,10 +19,6 @@ class GameViewModel: ObservableObject {
     
     private let manager = GameNetworkManager()
     
-    private var gameState: GameState {
-        GameState(game: game)
-    }
-    
     var checkPlayersReadiness: CheckPlayersReadiness {
         CheckPlayersReadiness(players: game.players)
     }
@@ -54,14 +50,18 @@ class GameViewModel: ObservableObject {
         }
     }
     
-    func checkMovingToTheNextScreen() {
-        if gameState.isVoting {
+    func checkMovingToTheNextScreen(newGameState: GameState) -> Bool {
+        if newGameState.isVoting {
             showVoteScreen = true
+            return true
+        } else {
+            return false
         }
     }
     
     func onGameNotification(_ game: Game) {
-        self.game = game
-        checkMovingToTheNextScreen()
+        if !checkMovingToTheNextScreen(newGameState: GameState(game: game)) {
+            self.game = game
+        }
     }
 }

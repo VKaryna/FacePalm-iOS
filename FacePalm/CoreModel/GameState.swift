@@ -26,7 +26,7 @@ struct GameState {
         game.status == "FINISHED"
     }
     
-    init (game: Game) {
+    init(game: Game) {
         self.game = game
     }
 }

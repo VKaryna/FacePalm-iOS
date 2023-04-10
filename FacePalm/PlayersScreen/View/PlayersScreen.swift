@@ -101,7 +101,7 @@ struct PlayersScreen: View {
             }
             .padding(.leading)
         }
-        .frame(maxHeight: 380)
+        .frame(maxHeight: 360)
         .animation(.easeInOut, value: viewModel.game.players)
     }
     

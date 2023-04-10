@@ -17,10 +17,6 @@ class VoteViewModel: ObservableObject {
     @Published var game: Game
     @Published var activityIndicator = true
     
-    private var gameState: GameState {
-        GameState(game: game)
-    }
-    
     var checkPlayersReadiness: CheckPlayersReadiness {
         CheckPlayersReadiness(players: game.players)
     }
@@ -54,14 +50,18 @@ class VoteViewModel: ObservableObject {
         }
     }
     
-    func checkRoundEnd() {
-        if gameState.isResults {
+    func checkRoundEnd(newGameState: GameState) -> Bool {
+        if newGameState.isResults {
             showResultScreen = true
+            return true
+        } else {
+            return false
         }
     }
     
     func onGameNotification(_ game: Game) {
-        self.game = game
-        checkRoundEnd()
+        if !checkRoundEnd(newGameState: GameState(game: game)) {
+            self.game = game
+        }
     }
 }
