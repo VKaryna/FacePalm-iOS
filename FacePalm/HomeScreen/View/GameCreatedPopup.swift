@@ -37,7 +37,7 @@ struct GameCreatedPopup: View {
     }
     
     private var shareButton: some View {
-        ShareLink(item: "\(gameId)") {
+        ShareLink(item: ShareContent(gameID: gameId).content) {
             Image(systemName: "square.and.arrow.up")
                 .foregroundColor(.black)
         }

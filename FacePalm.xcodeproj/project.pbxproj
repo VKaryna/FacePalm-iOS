@@ -24,6 +24,7 @@
 		E933594A29AFE55000272B42 /* AppNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E933594929AFE55000272B42 /* AppNavigation.swift */; };
 		E933594C29AFE59D00272B42 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E933594B29AFE59D00272B42 /* Screen.swift */; };
 		E933594F29AFEC0B00272B42 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E933594E29AFEC0B00272B42 /* WelcomeScreen.swift */; };
+		E9346C9429E499C7007C1E0B /* ShareContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9346C9329E499C7007C1E0B /* ShareContent.swift */; };
 		E939B09C299306FA003BDA55 /* GameNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E939B09B299306FA003BDA55 /* GameNetworkManager.swift */; };
 		E94010FF29B4B4DC00C4423E /* GameWinnersPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94010FE29B4B4DC00C4423E /* GameWinnersPopup.swift */; };
 		E945115529900BC500B94ED0 /* RealTimeGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E945115429900BC500B94ED0 /* RealTimeGameManager.swift */; };
@@ -102,6 +103,7 @@
 		E933594929AFE55000272B42 /* AppNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigation.swift; sourceTree = "<group>"; };
 		E933594B29AFE59D00272B42 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		E933594E29AFEC0B00272B42 /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
+		E9346C9329E499C7007C1E0B /* ShareContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareContent.swift; sourceTree = "<group>"; };
 		E939B09B299306FA003BDA55 /* GameNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNetworkManager.swift; sourceTree = "<group>"; };
 		E94010FE29B4B4DC00C4423E /* GameWinnersPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameWinnersPopup.swift; sourceTree = "<group>"; };
 		E945115429900BC500B94ED0 /* RealTimeGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeGameManager.swift; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 				E9147F35299702B800D20DDE /* SortedPlayers.swift */,
 				E98631592999A81D00914676 /* GameState.swift */,
 				E9043F4929A53EB2001C186B /* CurrentRound.swift */,
+				E9346C9329E499C7007C1E0B /* ShareContent.swift */,
 			);
 			path = CoreModel;
 			sourceTree = "<group>";
@@ -681,6 +684,7 @@
 				E9F1268C29AC22E200833975 /* MoveToNextRoundBody.swift in Sources */,
 				E92A2545297B55C900404752 /* Color+Basic.swift in Sources */,
 				E9F5B75C298C50D3005A982D /* PlayersScreen.swift in Sources */,
+				E9346C9429E499C7007C1E0B /* ShareContent.swift in Sources */,
 				E9456C772989BDB700E6FD82 /* Popup.swift in Sources */,
 				E9E5FB41299040A3004A4676 /* CurrentPlayer.swift in Sources */,
 				E9F98C23299057E500408787 /* ErrorPopup.swift in Sources */,

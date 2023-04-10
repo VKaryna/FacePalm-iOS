@@ -208,7 +208,7 @@ struct PlayersScreen: View {
     }
     
     private var shareButton: some View {
-        ShareLink(item: "\(viewModel.game.gameId)") {
+        ShareLink(item: ShareContent(gameID: viewModel.game.gameId).content) {
             Image(systemName: "square.and.arrow.up")
                 .font(.system(size: 14))
                 .foregroundColor(.fpGray)
