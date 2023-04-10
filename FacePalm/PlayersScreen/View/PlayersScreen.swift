@@ -43,6 +43,7 @@ struct PlayersScreen: View {
             .background(Color.fpCream)
             .cornerRadius(16)
             .padding(.horizontal, 16)
+            .padding(.vertical, 16)
         }
         .navigationBarBackButtonHidden()
         .toolbar {
@@ -53,7 +54,6 @@ struct PlayersScreen: View {
                 shareButton
             }
         }
-        .ignoresSafeArea()
         .popup(isPresented: .constant(showJoinGamePopup)) {
             JoinGamePopup(isPresented: $showJoinGamePopup, showDefaultErrorPopup: $showDefaultErrorPopup)
                 .environmentObject(viewModel)
@@ -101,7 +101,7 @@ struct PlayersScreen: View {
             }
             .padding(.leading)
         }
-        .frame(maxHeight: 360)
+        .frame(maxHeight: 380)
         .animation(.easeInOut, value: viewModel.game.players)
     }
     
@@ -202,17 +202,14 @@ struct PlayersScreen: View {
             }
         } label: {
             Image(systemName: "xmark")
-                .resizable()
-                .font(.system(size: 14))
+                .font(.system(size: 14, weight: .bold))
                 .foregroundColor(.fpGray)
-                .fontWeight(.bold)
         }
     }
     
     private var shareButton: some View {
         ShareLink(item: "\(viewModel.game.gameId)") {
             Image(systemName: "square.and.arrow.up")
-                .resizable()
                 .font(.system(size: 14))
                 .foregroundColor(.fpGray)
         }
