@@ -35,7 +35,6 @@ class PlayersViewModel: ObservableObject {
     }
 
     @Published var game: Game
-    @Published var showGameScreen: Bool = false
 
     init(gameId: String) {
         _game = Published(wrappedValue: Game(gameId: gameId))
@@ -64,14 +63,7 @@ class PlayersViewModel: ObservableObject {
         game = try await manager.becomeReady(playerId: playerId, gameId: game.gameId)
     }
     
-    func checkGameStart() {
-        if gameState.isInProgress {
-            showGameScreen = true
-        }
-    }
-    
     func onGameNotification(_ game: Game) {
         self.game = game
-        checkGameStart()
     }
 }

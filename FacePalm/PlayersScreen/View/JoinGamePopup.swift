@@ -55,7 +55,7 @@ struct JoinGamePopup: View {
         LoadingButton() {
             do {
                 try await viewModel.joinGame(playerName: playerName)
-                gameNotifications.subscribeToGameUpdates(gameId: viewModel.game.gameId)
+                gameNotifications.subscribeToGameUpdates(gameId: viewModel.game.gameId, playerId: viewModel.playerId)
                 isPresented = false
             } catch is UserAlreadyExistsError {
                 showErrorMessage = true

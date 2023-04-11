@@ -12,7 +12,6 @@ import SwiftUI
 
 @MainActor
 class GameViewModel: ObservableObject {
-    @Published var showVoteScreen: Bool = false
     @Published var selectedCardIndex: Int = 0
     @Published var game: Game
     @Published var activityIndicator: Bool = true
@@ -50,17 +49,8 @@ class GameViewModel: ObservableObject {
         }
     }
     
-    func checkMovingToTheNextScreen(newGameState: GameState) -> Bool {
-        if newGameState.isVoting {
-            showVoteScreen = true
-            return true
-        } else {
-            return false
-        }
-    }
-    
     func onGameNotification(_ game: Game) {
-        if !checkMovingToTheNextScreen(newGameState: GameState(game: game)) {
+        if GameState(game: game) == .game {
             self.game = game
         }
     }

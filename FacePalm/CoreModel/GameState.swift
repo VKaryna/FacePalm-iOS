@@ -7,26 +7,23 @@
 
 import Foundation
 
-struct GameState {
-    let game: Game
-    
-    var isInProgress: Bool {
-        game.status == "ROUND"
-    }
-    
-    var isVoting: Bool {
-        game.status == "VOTING"
-    }
-    
-    var isResults: Bool {
-        game.status == "RESULTS"
-    }
-    
-    var isFinished: Bool {
-        game.status == "FINISHED"
-    }
+enum GameState {
+    case game, vote, results, finish, home, players
     
     init(game: Game) {
-        self.game = game
+        switch game.status {
+        case "CREATED":
+            self = .players
+        case "ROUND":
+            self = .game
+        case "VOTING":
+            self = .vote
+        case "RESULTS":
+            self = .results
+        case "FINISHED":
+            self = .finish
+        default:
+            self = .home
+        }
     }
 }

@@ -74,14 +74,6 @@ struct PlayersScreen: View {
                     navigation.path.removeLast()
                 }
         }
-        .onReceive(viewModel.$showGameScreen) { shouldShow in
-            if shouldShow == true {
-                navigation.path.append(Screen.game(
-                    gameId: viewModel.game.gameId,
-                    playerId: viewModel.playerId)
-                )
-            }
-        }
         .onReceive(gameNotifications.game) { game in
             print("LOG: PlayersScreen: On Game Notification")
             viewModel.onGameNotification(game)

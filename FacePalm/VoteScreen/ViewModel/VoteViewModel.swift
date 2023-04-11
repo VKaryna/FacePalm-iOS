@@ -12,7 +12,6 @@ class VoteViewModel: ObservableObject {
     private let manager = VoteNetworkManager()
     var playerId = 0
 
-    @Published var showResultScreen: Bool = false
     @Published var selectedCardIndex: Int = 0
     @Published var game: Game
     @Published var activityIndicator = true
@@ -50,17 +49,8 @@ class VoteViewModel: ObservableObject {
         }
     }
     
-    func checkRoundEnd(newGameState: GameState) -> Bool {
-        if newGameState.isResults {
-            showResultScreen = true
-            return true
-        } else {
-            return false
-        }
-    }
-    
     func onGameNotification(_ game: Game) {
-        if !checkRoundEnd(newGameState: GameState(game: game)) {
+        if GameState(game: game) == .vote {
             self.game = game
         }
     }

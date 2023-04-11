@@ -10,8 +10,6 @@ import Foundation
 @MainActor
 class ResultViewModel: ObservableObject {
     @Published var game: Game
-    @Published var showGameScreen: Bool = false
-    @Published var showHomeScreen: Bool = false
     @Published var activityIndicator = true
 
     private let manager = ResultNetworkManager()
@@ -62,15 +60,6 @@ class ResultViewModel: ObservableObject {
     
     func moveToNextRound() async throws {
         game = try await manager.moveToNextRound(gameId: game.gameId)
-        if gameState.isFinished {
-            showHomeScreen = true
-        }
-    }
-    
-    func checkMovingToTheNextScreen() {
-        if gameState.isInProgress {
-            showGameScreen = true
-        }
     }
     
     func getTotalPoints(for playerId: Int) -> Int {
@@ -79,6 +68,5 @@ class ResultViewModel: ObservableObject {
     
     func onGameNotifications(_ game: Game) {
         self.game = game
-        checkMovingToTheNextScreen()
     }
 }

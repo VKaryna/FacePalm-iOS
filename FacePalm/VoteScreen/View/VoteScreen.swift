@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct VoteScreen: View {
-    @EnvironmentObject private var navigation: AppNavigation
     @EnvironmentObject private var gameNotifications: GameNotifications
     @StateObject private var viewModel: VoteViewModel
     @State private var showFindGameErrorPopup = false
@@ -62,14 +61,6 @@ struct VoteScreen: View {
                         }
                     }
                 }
-        }
-        .onReceive(viewModel.$showResultScreen) { shouldShow in
-            if shouldShow {
-                navigation.path.append(Screen.results(
-                    gameId: viewModel.game.gameId,
-                    playerId: viewModel.playerId)
-                )
-            }
         }
         .onReceive(gameNotifications.game) { game in
             print("LOG: VoteScreen: On Game Notification")

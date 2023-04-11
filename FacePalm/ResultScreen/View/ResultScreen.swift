@@ -80,16 +80,6 @@ struct ResultScreen: View {
                     }
                 }
         }
-        .onReceive(viewModel.$showHomeScreen) { shouldShow in
-            if shouldShow {
-                navigation.path = [.home]
-            }
-        }
-        .onReceive(viewModel.$showGameScreen) { shouldShow in
-            if shouldShow {
-                navigation.path.append(.game(gameId: viewModel.game.gameId, playerId: viewModel.playerId))
-            }
-        }
         .onReceive(gameNotifications.game) { game in
             print("LOG: ResultsScreen: On Game Notification")
             viewModel.onGameNotifications(game)
@@ -163,7 +153,7 @@ struct ResultScreen: View {
                 }
             } else {
                 gameNotifications.unsubscribeFromGameUpdates()
-                viewModel.showHomeScreen = true
+                navigation.path = [.home]
             }
         } label: {
             Text(viewModel.isTheLastRound ? "Finish game" : "Continue")

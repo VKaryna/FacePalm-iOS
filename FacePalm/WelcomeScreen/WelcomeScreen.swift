@@ -43,6 +43,31 @@ struct WelcomeScreen: View {
             .popup(isPresented: $showGenericErrorPopup) {
                 AppUnavailablePopupView()
             }
+            .onReceive(gameNotifications.gameState) { state in
+                switch state {
+                case .home:
+                    navigation.path = [.home]
+                case .players:
+                    break
+                case .game:
+                    navigation.path.append(.game(
+                        gameId: gameNotifications.subscribedGameId ?? "",
+                        playerId: gameNotifications.currentPlayerId ?? 0)
+                    )
+                case .vote:
+                    navigation.path.append(.vote(
+                        gameId: gameNotifications.subscribedGameId ?? "",
+                        playerId: gameNotifications.currentPlayerId ?? 0)
+                    )
+                case .results:
+                    navigation.path.append(.results(
+                        gameId: gameNotifications.subscribedGameId ?? "",
+                        playerId: gameNotifications.currentPlayerId ?? 0)
+                    )
+                case .finish:
+                    navigation.path = [.home]
+                }
+            }
             .onAppear {
                 navigation.path.append(Screen.home)
             }
