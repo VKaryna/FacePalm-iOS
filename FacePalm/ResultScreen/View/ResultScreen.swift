@@ -90,7 +90,8 @@ struct ResultScreen: View {
                 navigation.path.append(.game(gameId: viewModel.game.gameId, playerId: viewModel.playerId))
             }
         }
-        .onReceiveWhileVisible(gameNotifications.game) { game in
+        .onReceive(gameNotifications.game) { game in
+            print("LOG: ResultsScreen: On Game Notification")
             viewModel.onGameNotifications(game)
         }
         .task {

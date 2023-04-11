@@ -71,7 +71,8 @@ struct VoteScreen: View {
                 )
             }
         }
-        .onReceiveWhileVisible(gameNotifications.game) { game in
+        .onReceive(gameNotifications.game) { game in
+            print("LOG: VoteScreen: On Game Notification")
             viewModel.onGameNotification(game)
         }
         .task {
