@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct WelcomeScreen: View {
+    @Environment(\.scenePhase) var scenePhase
     @EnvironmentObject private var navigation: AppNavigation
     @StateObject private var gameNotifications = GameNotifications()
     @State private var showGenericErrorPopup = false
@@ -70,6 +71,14 @@ struct WelcomeScreen: View {
             }
             .onAppear {
                 navigation.path.append(Screen.home)
+            }
+            .onChange(of: scenePhase) { newPhase in
+                switch newPhase {
+                case .active:
+                    gameNotifications.refreshGameState()
+                default:
+                    break
+                }
             }
         }
     }

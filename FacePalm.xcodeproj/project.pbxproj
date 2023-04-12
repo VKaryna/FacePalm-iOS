@@ -13,6 +13,7 @@
 		E9147F342996FE4E00D20DDE /* ResultNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9147F332996FE4E00D20DDE /* ResultNetworkManager.swift */; };
 		E9147F36299702B800D20DDE /* SortedPlayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9147F35299702B800D20DDE /* SortedPlayers.swift */; };
 		E9170F9A29E6036A003863BA /* GameNotificationsSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9170F9929E6036A003863BA /* GameNotificationsSubject.swift */; };
+		E9170F9F29E69E3E003863BA /* GameNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9170F9E29E69E3E003863BA /* GameNotificationsManager.swift */; };
 		E9251070298C5FA600432573 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925106F298C5FA600432573 /* Player.swift */; };
 		E9251072298C6E2E00432573 /* JoinGamePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9251071298C6E2E00432573 /* JoinGamePopup.swift */; };
 		E9251074298C6FC700432573 /* JoinGameBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9251073298C6FC700432573 /* JoinGameBody.swift */; };
@@ -91,6 +92,7 @@
 		E9147F332996FE4E00D20DDE /* ResultNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultNetworkManager.swift; sourceTree = "<group>"; };
 		E9147F35299702B800D20DDE /* SortedPlayers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedPlayers.swift; sourceTree = "<group>"; };
 		E9170F9929E6036A003863BA /* GameNotificationsSubject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNotificationsSubject.swift; sourceTree = "<group>"; };
+		E9170F9E29E69E3E003863BA /* GameNotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNotificationsManager.swift; sourceTree = "<group>"; };
 		E925106F298C5FA600432573 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		E9251071298C6E2E00432573 /* JoinGamePopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGamePopup.swift; sourceTree = "<group>"; };
 		E9251073298C6FC700432573 /* JoinGameBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameBody.swift; sourceTree = "<group>"; };
@@ -218,6 +220,14 @@
 				E9170F9929E6036A003863BA /* GameNotificationsSubject.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E9170F9D29E69E34003863BA /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E9170F9E29E69E3E003863BA /* GameNotificationsManager.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		E92A254B297B6AA300404752 /* CoreUI */ = {
@@ -490,6 +500,7 @@
 		E9CB939029E00B01004959FB /* GameNotification */ = {
 			isa = PBXGroup;
 			children = (
+				E9170F9D29E69E34003863BA /* Network */,
 				E9170F9829E60356003863BA /* Model */,
 				E9CB939129E00B13004959FB /* GameNotifications.swift */,
 			);
@@ -678,6 +689,7 @@
 				E933594A29AFE55000272B42 /* AppNavigation.swift in Sources */,
 				E9F80E1129AEC1FC0046516E /* VoteCards.swift in Sources */,
 				E9F1268C29AC22E200833975 /* MoveToNextRoundBody.swift in Sources */,
+				E9170F9F29E69E3E003863BA /* GameNotificationsManager.swift in Sources */,
 				E92A2545297B55C900404752 /* Color+Basic.swift in Sources */,
 				E9F5B75C298C50D3005A982D /* PlayersScreen.swift in Sources */,
 				E9346C9429E499C7007C1E0B /* ShareContent.swift in Sources */,
