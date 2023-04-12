@@ -16,18 +16,32 @@ final class GameNotifications: ObservableObject {
     private let subscriptionManager = RealTimeGameManager()
     private let gamePublisher = SingleSubscriberSubject<Game, Never>()
     private let gameStatePublisher = PassthroughSubject<GameState, Never>()
+    private let filteredGameStatePublisher = PassthroughSubject<GameState, Never>()
+    private var cancellables = Set<AnyCancellable>()
     private(set) var subscribedGameId: String?
     private(set) var currentPlayerId: Int?
     
     // MARK: - Outputs
     
     var game: AnyPublisher<Game, Never> {
-        gamePublisher.eraseToAnyPublisher()
+        gamePublisher
+            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+            .eraseToAnyPublisher()
     }
     
     var gameState: AnyPublisher<GameState, Never> {
-        gameStatePublisher
+        filteredGameStatePublisher
             .eraseToAnyPublisher()
+    }
+    
+    init() {
+        gameStatePublisher
+            .removeDuplicates()
+            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+            .sink { [weak self] state in
+                self?.filteredGameStatePublisher.send(state)
+            }
+            .store(in: &cancellables)
     }
     
     // MARK: - Intents

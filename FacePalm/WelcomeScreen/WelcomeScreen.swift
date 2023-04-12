@@ -47,7 +47,7 @@ struct WelcomeScreen: View {
                 switch state {
                 case .home:
                     navigation.path = [.home]
-                case .players:
+                case .players, .finish:
                     break
                 case .game:
                     navigation.path.append(.game(
@@ -64,8 +64,6 @@ struct WelcomeScreen: View {
                         gameId: gameNotifications.subscribedGameId ?? "",
                         playerId: gameNotifications.currentPlayerId ?? 0)
                     )
-                case .finish:
-                    navigation.path = [.home]
                 }
             }
             .onAppear {
