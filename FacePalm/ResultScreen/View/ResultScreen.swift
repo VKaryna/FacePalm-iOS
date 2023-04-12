@@ -157,6 +157,7 @@ struct ResultScreen: View {
             }
         } label: {
             Text(viewModel.isTheLastRound ? "Finish game" : "Continue")
+                .animation(nil, value: viewModel.isTheLastRound)
         }
         .buttonStyle(.primary(color: Color.green))
         .frame(width: 140)
