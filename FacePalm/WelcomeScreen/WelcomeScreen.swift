@@ -75,7 +75,10 @@ struct WelcomeScreen: View {
             .onChange(of: scenePhase) { newPhase in
                 switch newPhase {
                 case .active:
+                    gameNotifications.resubscribeToGameUpdates()
                     gameNotifications.refreshGameState()
+                case .background:
+                    gameNotifications.unsubscribeFromGameUpdates()
                 default:
                     break
                 }

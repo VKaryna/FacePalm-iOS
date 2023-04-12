@@ -187,7 +187,7 @@ struct PlayersScreen: View {
     private var closeButton: some View {
         LoadingButton {
             do {
-                gameNotifications.unsubscribeFromGameUpdates()
+                gameNotifications.unsubscribeFromGameUpdates(forget: true)
                 try await viewModel.leaveGame()
                 navigation.path.removeLast()
             } catch {

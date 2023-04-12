@@ -23,7 +23,7 @@ class RealTimeGameManager: NSObject {
         socket = urlSession?.webSocketTask(with: url)
     }
     
-    private func listenForMessage(){
+    private func listenForMessage() {
         socket?.receive { [weak self] result in
             DispatchQueue.main.async {
                 switch result {

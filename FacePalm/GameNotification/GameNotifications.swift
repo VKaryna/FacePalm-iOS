@@ -51,12 +51,18 @@ final class GameNotifications: ObservableObject {
         Task {
             let game = try await manager.findGame(gameId: gameId)
             gamePublisher.send(game)
+            gameStatePublisher.send(GameState(game: game))
         }
     }
     
-    func subscribeToGameUpdates(gameId: String, playerId: Int, attempt: Int = 0) {
+    func subscribeToGameUpdates(gameId: String, playerId: Int) {
         subscribedGameId = gameId
         currentPlayerId = playerId
+        resubscribeToGameUpdates()
+    }
+    
+    func resubscribeToGameUpdates(attempt: Int = 0) {
+        guard let gameId = subscribedGameId else { return }
         subscriptionManager.establishConnection(gameId: gameId) { [weak self] result in
             switch result {
             case .success(let game):
@@ -64,15 +70,18 @@ final class GameNotifications: ObservableObject {
                 self?.gameStatePublisher.send(GameState(game: game))
             case .failure where attempt < 3:
                 self?.unsubscribeFromGameUpdates()
-                self?.subscribeToGameUpdates(gameId: gameId, playerId: playerId, attempt: attempt + 1)
+                self?.resubscribeToGameUpdates(attempt: attempt + 1)
             case .failure:
                 self?.unsubscribeFromGameUpdates()
             }
         }
     }
     
-    func unsubscribeFromGameUpdates() {
-        subscribedGameId = nil
+    func unsubscribeFromGameUpdates(forget: Bool = false) {
+        if forget {
+            subscribedGameId = nil
+            currentPlayerId = nil
+        }
         subscriptionManager.disconnect()
     }
 }

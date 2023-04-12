@@ -152,7 +152,7 @@ struct ResultScreen: View {
                     showNextRoundErrorPopup = true
                 }
             } else {
-                gameNotifications.unsubscribeFromGameUpdates()
+                gameNotifications.unsubscribeFromGameUpdates(forget: true)
                 navigation.path = [.home]
             }
         } label: {
