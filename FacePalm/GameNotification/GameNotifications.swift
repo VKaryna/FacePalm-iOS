@@ -25,7 +25,6 @@ final class GameNotifications: ObservableObject {
     
     var game: AnyPublisher<Game, Never> {
         gamePublisher
-            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
             .eraseToAnyPublisher()
     }
     

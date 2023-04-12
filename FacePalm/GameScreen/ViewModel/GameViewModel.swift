@@ -45,7 +45,8 @@ class GameViewModel: ObservableObject {
     
     func chooseCard(cardId: Int) async throws {
         if let roundId = currentRound.round?.id {
-            game = try await manager.chooseCard(cardId: cardId, playerId: playerId, roundId: roundId, gameId: game.gameId)
+            let game = try await manager.chooseCard(cardId: cardId, playerId: playerId, roundId: roundId, gameId: game.gameId)
+            onGameNotification(game)
         }
     }
     
