@@ -67,6 +67,8 @@ class ResultViewModel: ObservableObject {
     }
     
     func onGameNotifications(_ game: Game) {
-        self.game = game
+        if GameState(game: game) == .results {
+            self.game = game
+        }
     }
 }
