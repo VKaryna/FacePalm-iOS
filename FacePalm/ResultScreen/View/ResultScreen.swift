@@ -81,7 +81,6 @@ struct ResultScreen: View {
                 }
         }
         .onReceive(gameNotifications.game) { game in
-            print("LOG: ResultsScreen: On Game Notification")
             viewModel.onGameNotifications(game)
         }
         .task {

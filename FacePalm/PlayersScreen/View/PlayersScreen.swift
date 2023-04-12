@@ -75,7 +75,6 @@ struct PlayersScreen: View {
                 }
         }
         .onReceive(gameNotifications.game) { game in
-            print("LOG: PlayersScreen: On Game Notification")
             viewModel.onGameNotification(game)
         }
         .onAppear {
